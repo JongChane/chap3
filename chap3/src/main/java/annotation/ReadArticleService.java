@@ -1,4 +1,4 @@
-package xml;
+package annotation;
 
 import org.springframework.stereotype.Component;
 
