@@ -93,11 +93,10 @@ public class UserController {
  * 	
  */
 	@RequestMapping("mypage")
-	public ModelAndView mypage(User user, HttpSession session) {
+	public ModelAndView mypage(String userid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-	    String userid = (String) session.getAttribute("userid");
-	    User dbUser = service.selectUserOne(userid);
-		mav.addObject("user",dbUser);
+		User user = service.selectUserOne(userid);
+		mav.addObject("user",user);
 		return mav;
 	}
 }
