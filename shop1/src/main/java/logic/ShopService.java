@@ -109,6 +109,11 @@ public class ShopService {
 			saleItemDao.insert(saleItem); //saleitem 테이블에 데이터 추가
 		}
 		return sale; //주문정보, 주문상품정보, 상품정보, 사용자정보
+	}
+
+	public List<Sale> salelist(String userid) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 		
 }		

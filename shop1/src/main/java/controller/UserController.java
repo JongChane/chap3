@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -96,6 +98,7 @@ public class UserController {
 	public ModelAndView mypage(String userid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		User user = service.selectUserOne(userid);
+		List<Sale> salelist = service.salelist(userid);
 		mav.addObject("user",user);
 		return mav;
 	}
