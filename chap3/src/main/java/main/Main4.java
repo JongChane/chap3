@@ -1,18 +1,19 @@
 package main;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 
 import annotation.Article;
-import annotation.ReadArticleService;
-import xml.Member;
 import annotation.MemberService;
+import annotation.ReadArticleService;
+import config.Appctx;
+import xml.Member;
 import xml.UpdateInfo;
 
-public class Main3 {
+public class Main4 {
 	public static void main(String[] args) {
-		String[] config = {"annotation.xml"};
-		ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(Appctx.class);
 		ReadArticleService service =
 				ctx.getBean("readArticleService",ReadArticleService.class);
 		try {

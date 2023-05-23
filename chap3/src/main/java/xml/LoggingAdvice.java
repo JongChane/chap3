@@ -1,7 +1,5 @@
 package xml;
 
-import org.aspectj.lang.annotation.AfterReturning;
-
 public class LoggingAdvice {
 	public void before() {
 		System.out.println("[LA]메서드 실행 전 전처리 수행 기능");
