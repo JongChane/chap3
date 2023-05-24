@@ -9,12 +9,12 @@
 <title>mypage</title>
 <script type="text/javascript">
 	$(function() {
-		$("#info").show()
-		$("#oinfo").hide()
-		$(".saleLine").each(function() {
+		$("#minfo").show() //id=minfo인 태그 내용 보여줌 -> 회원정보
+		$("#oinfo").hide() //id=oinfo인 태그 내용 숨김 -> 주문정보
+		$(".saleLine").each(function() { //class = "saleLine"(주문상품조회부분) 모든 태그 감추기
 			$(this).hide()
 		})
-		$("#tab1").addClass("select")
+		$("#tab1").addClass("select") //select class 속성 추가
 	})
 	function disp_div(id,tab) {
 		$(".info").each(function() {
@@ -26,8 +26,8 @@
 		$("#"+id).show()
 		$("#"+tab).addClass("select")
 	}
-	function list_disp(id) {
-		$("#"+id).toggle()
+	function list_disp(id) { //id=saleLine0, saleLine1 ....
+		$("#"+id).toggle()	 //현재 보이는 경우 -> 안보이게, //현재 안보이는 경우 -> 보이게
 	}
 </script>
 <style type="text/css">
@@ -40,9 +40,13 @@
 		text-decoration : none;
 		font-weight : bold;
 	}
+	  .title { 
+     text-decoration: none;
+    }
 </style>
 </head>
 <%--
+	http://localhost:8080/shop1/user/mypage?userid=id명
 	mypage 완성하기
 	파라미터   : userid
 	salelist : userid가 주문한 전체 Sale 객체 목록. (List)
@@ -76,7 +80,7 @@
 					</a>
 					</td>
 					<td align="center">
-						<fmt:formatDate value="${sale.saledate }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value="${sale.saledate}" pattern="yyyy-MM-dd"/>
 					</td>
 					<td align="right">
 						<fmt:formatNumber value="${sale.total}" pattern="###,###"/>원 
@@ -91,7 +95,7 @@
 								<td>주문수량</td>
 								<td>상품총액</td>
 							</tr>
-							<c:forEach items="${sale.itemList}" var="slaeItem">
+							<c:forEach items="${sale.itemList}" var="saleItem">
 								<tr>
 									<td class="title">${saleItem.item.name}</td>
 									<td>

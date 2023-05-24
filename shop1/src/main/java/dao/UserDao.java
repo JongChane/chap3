@@ -38,8 +38,30 @@ public class UserDao {
 	public User selectOne(String userid) {
 		param.clear();
 		param.put("userid", userid);
-		return template.queryForObject
+		return template.queryForObject //select 문의 경우
 			("select * from useraccount where userid=:userid", param, mapper);
+	}
+	public void updateUser(User user) {
+		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
+		String sql = "update useraccount set username=:username,"
+				+ " birthday=:birthday, phoneno=:phoneno, postcode=:postcode,"
+				+ " address=:address, email=:email where userid=:userid";
+		template.update(sql, param);
+		
+	}
+	public void deleteUser(String userid) {
+		param.clear();
+		param.put("userid", userid);
+		String sql = "delete from useraccount where userid=:userid";
+		template.update(sql, param);
+	}
+	public void updatePassword(String userid, String chgpass) {
+		param.clear();
+		param.put("userid", userid);
+		param.put("password", chgpass);
+		String sql = "update useraccount set password=:password where userid=:userid";
+		template.update(sql, param);
+		
 	}
 
 }

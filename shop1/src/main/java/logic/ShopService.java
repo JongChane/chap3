@@ -112,8 +112,34 @@ public class ShopService {
 	}
 
 	public List<Sale> salelist(String userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
+		List<Sale> list = saleDao.list(userid); //id 사용자가 주문 정보 목록
+		for(Sale sa : list) {
+			//saleitemlist : 한개의 주문에 해당하는 주문상품 목록
+			List<SaleItem> saleitemlist = saleItemDao.list(sa.getSaleid());
+			for(SaleItem si : saleitemlist) {
+				Item item = itemDao.getItem(si.getItemid()); //상품정보
+				si.setItem(item);
+			}
+			sa.setItemList(saleitemlist);
+		}
+		return list;
+	}
+
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+		
+	}
+
+	public void deleteUser(String userid) {
+		userDao.deleteUser(userid);
+		
+	}
+
+	public void updatePassword(String userid, String chgpass) {
+		userDao.updatePassword(userid, chgpass);
+		
+	}
+
+
 		
 }		
